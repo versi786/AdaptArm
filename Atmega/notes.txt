@@ -1,0 +1,7 @@
+//Compile Steps
+https://code.google.com/p/arduino/wiki/BuildProcess
+https://balau82.wordpress.com/2011/03/29/programming-arduino-uno-in-pure-c/
+
+//MicroController
+Atmega32u4 -http://www.atmel.com/devices/atmega32u4.aspx
+Ref Manual - http://www.atmel.com/Images/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf
