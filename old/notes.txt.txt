@@ -1,6 +1,0 @@
-In order to switch to C we would use the AVR compiler
-https://balau82.wordpress.com/2011/03/29/programming-arduino-uno-in-pure-c/
-
-http://www.engblaze.com/tutorial-using-atmel-studio-6-with-arduino-projects/
-
-http://www.visualmicro.com/
