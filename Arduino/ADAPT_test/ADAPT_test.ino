@@ -188,23 +188,23 @@ void loop()
         count = 0;
         
         //sig_mean = getMean(emg_data);
-        sig_var = getVariance(emg_data);
+        //sig_var = getVariance(emg_data);
         sig_max = getMax(emg_data);
         sig_min = getMin(emg_data);
         //Serial.println(sig_var);
         //Serial.println(sig_max);
         //sig_min = getMin(emg_data);
         sig_range = sig_max - sig_min;
-        sig_ll = getAvgLineLength(emg_data);
-        Serial.print("Variance: ");
-        Serial.println(sig_var);
-        Serial.print("Line Length: ");
-        Serial.println(sig_ll);
-        Serial.print("Range: ");
-        Serial.println(sig_range); 
+        //sig_ll = getAvgLineLength(emg_data);
+//        Serial.print("Variance: ");
+//        Serial.println(sig_var);
+//        Serial.print("Line Length: ");
+//        Serial.println(sig_ll);
+//        Serial.print("Range: ");
+//        Serial.println(sig_range); 
         
         //if(true)
-        if (sig_var >= 1000  && sig_ll > 1.5 && servo_timer == timer_threshold)
+        if (range >= 85 && servo_timer == timer_threshold)
         {
           /*if(last_classification == 0){
             last_classification = 1;
