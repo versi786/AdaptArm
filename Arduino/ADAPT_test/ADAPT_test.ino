@@ -165,6 +165,7 @@ void setup()
 
 void loop()
 {
+  float range;
   if(off_flag){
     sleep_mode();
   }else{
