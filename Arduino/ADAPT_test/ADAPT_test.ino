@@ -10,9 +10,10 @@
 int servo_pin = 9;
 int servo_power_pin = 6;
 int push_pin = 2;
-int muscle_pin = A0;
-int status_pin = A1;
+int muscle_pin = A3;
+int status_pin = A5;
 int speaker_pin = 12;
+int LED_pin = 13;
 
 /////////////////////////
 ///// Servo things //////
@@ -165,6 +166,7 @@ void setup()
 
 void loop()
 {
+  digitalWrite(LED_pin, HIGH);
   int range;
   if(off_flag){
     sleep_mode();
