@@ -152,11 +152,15 @@ void setup()
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);   // sleep mode is set here
   sleep_enable();
   
+  digitalWrite(LED_pin, HIGH);
+  delay(2000);
+  digitalWrite(LED_pin, LOW);
+  
   
   // Initial state of switch must be set
   if(digitalRead(push_pin) == HIGH){
     digitalWrite(servo_power_pin, LOW);
-    off_flag = true;
+    off_flag = false; //CHANGED FROM TRUE to FALSE //TODO
   }else{
     digitalWrite(servo_power_pin, HIGH);
     off_flag = false;
@@ -166,7 +170,7 @@ void setup()
 
 void loop()
 {
-  digitalWrite(LED_pin, HIGH);
+  
   int range;
   if(off_flag){
     sleep_mode();
@@ -209,6 +213,7 @@ void loop()
         //if(true)
         if (range >= 85 && servo_timer == timer_threshold)
         {
+          digitalWrite(LED_pin, HIGH);
           /*if(last_classification == 0){
             last_classification = 1;
           }else if(last_classification == 1){ */
@@ -235,6 +240,7 @@ void loop()
           last_classification = 0;
         }
       }
+      digitalWrite(LED_pin, LOW);
     }
     // Don't allow the servo_timer to get too big. Overflow errors
     // crash the Arduino.
