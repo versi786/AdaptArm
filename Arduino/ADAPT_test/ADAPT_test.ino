@@ -211,7 +211,7 @@ void loop()
 //        Serial.println(sig_range); 
         
         //if(true)
-        if (range >= 85 && servo_timer == timer_threshold)
+        if (range >= 10 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
         {
           digitalWrite(LED_pin, HIGH);
           /*if(last_classification == 0){
