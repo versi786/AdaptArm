@@ -7,7 +7,7 @@ byte index = 0; // Index into array; where to store the character
 
 int data[data_length];
 int emg_index = 0;
-int emg_pin = A0;
+int emg_pin = A3;
 int LED_pin = 13;
 
 
@@ -60,15 +60,6 @@ boolean delay_without_delaying(unsigned long &since, unsigned long time) {
 
 void loop()
 {
-  Serial.print("Hi\r\n");
-  digitalWrite(LED_pin, LOW);
-  if(emg_index != data_length){
-    if(delay_without_delaying(emg_time,2)){
-       //data[emg_index] = analogRead(emg_pin);
-       emg_index = (emg_index + 1);
-    }
-  }else{
-   emg_index = 0;
-   dump(); 
-  }
+  Serial.println(analogRead(emg_pin));
+  delay(100);
 }

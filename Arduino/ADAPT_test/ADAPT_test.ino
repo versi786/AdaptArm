@@ -160,7 +160,7 @@ void setup()
   // Initial state of switch must be set
   if(digitalRead(push_pin) == HIGH){
     digitalWrite(servo_power_pin, LOW);
-    off_flag = false; //CHANGED FROM TRUE to FALSE //TODO
+    off_flag = true; //CHANGED FROM TRUE to FALSE //TODO
   }else{
     digitalWrite(servo_power_pin, HIGH);
     off_flag = false;
@@ -211,7 +211,9 @@ void loop()
 //        Serial.println(sig_range); 
         
         //if(true)
-        if (range >= 10 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
+      
+        
+        if (range >= 100 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
         {
           digitalWrite(LED_pin, HIGH);
           /*if(last_classification == 0){
