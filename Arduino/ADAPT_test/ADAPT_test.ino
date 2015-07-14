@@ -213,7 +213,7 @@ void loop()
         //if(true)
       
         
-        if (range >= 100 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
+        if (range >= 50 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
         {
           digitalWrite(LED_pin, HIGH);
           /*if(last_classification == 0){
