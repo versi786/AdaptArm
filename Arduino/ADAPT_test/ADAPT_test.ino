@@ -20,7 +20,7 @@ int LED_pin = 13;
 /////////////////////////
 Servo servo;
 float toggle_threshold = 8.0;
-int opened_angle = 65, closed_angle = 0;
+int opened_angle = 180, closed_angle = 65;
 int servo_timer = 0;
 int timer_threshold = 1500;
 
@@ -171,7 +171,7 @@ void setup()
 void loop()
 {
   
-  int range;
+  int sig_range;
   if(off_flag){
     sleep_mode();
   }else{
@@ -213,8 +213,10 @@ void loop()
         //if(true)
       
         
-        if (range >= 50 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
+        if (sig_range >= 100 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
         {
+          //Serial.println(muscle_pin);
+          //delay(100);
           digitalWrite(LED_pin, HIGH);
           /*if(last_classification == 0){
             last_classification = 1;
@@ -223,13 +225,13 @@ void loop()
             last_classification = 0;
             hand_opened = !hand_opened;
             if (hand_opened){
-              for(int pos = opened_angle * 2; pos > closed_angle * 2; pos-=2)
+              for(int pos = opened_angle; pos > closed_angle; pos-=2)
               { // Closes the hand by gradually adjusting the written angle.     
                 servo.write(pos);
                 delay(2);
               }
             }else{
-              for(int pos = closed_angle * 2; pos < opened_angle * 2; pos+=2) 
+              for(int pos = closed_angle; pos < opened_angle; pos+=2) 
               { // Opens the hand by gradually adjusting the written angle.           
                 servo.write(pos);
                 delay(2);
