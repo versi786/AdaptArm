@@ -6,7 +6,7 @@ import movingWindow
 
 #MAIN
 # collectionTime = 60 #time in seconds
-sampFreq = 1000 #Hz
+sampFreq = 500 #Hz
 winLenSeconds = 0.25#seconds
 winDisplacementSeconds = 0.125 # seconds
 classifications = ["rest", "flex"]
