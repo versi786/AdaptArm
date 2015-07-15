@@ -60,6 +60,9 @@ boolean delay_without_delaying(unsigned long &since, unsigned long time) {
 
 void loop()
 {
+  if(delay_without_delaying(emg_time, 2))
+ }
   Serial.println(analogRead(emg_pin));
   delay(100);
+ }
 }
