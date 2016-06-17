@@ -1,8 +1,8 @@
 #include <Servo.h>
 #include <avr/sleep.h>
 
-#define BATT_FIRST_LEVEL 600
-#define BATT_SECOND_LEVEL 700
+#define BATT_DANGER_LEVEL 700
+
 //Git test
 /////////////////////////
 //////// Pins ///////////
@@ -160,7 +160,7 @@ void setup()
   // Initial state of switch must be set
   if(digitalRead(push_pin) == HIGH){
     digitalWrite(servo_power_pin, LOW);
-    off_flag = true; //CHANGED FROM TRUE to FALSE //TODO
+    off_flag = true; 
   }else{
     digitalWrite(servo_power_pin, HIGH);
     off_flag = false;
@@ -171,56 +171,32 @@ void setup()
 void loop()
 {
   
+  //Printing cell voltage battery
+  Serial.println(analogRead(status_pin));
   int sig_range;
   if(off_flag){
     sleep_mode();
   }else{
     if(delay_without_delaying(power_time, 15000)){
       int temp = analogRead(status_pin);
-      if(temp < BATT_FIRST_LEVEL && temp > BATT_SECOND_LEVEL){
-        tone(speaker_pin, 261);
-        delay(500);
-        noTone(speaker_pin);
-      }else if(temp < BATT_SECOND_LEVEL){
+      if(temp < BATT_DANGER_LEVEL){
         digitalWrite(servo_power_pin, LOW);
-        off_flag = true; 
+        
       }
     }
     if (delay_without_delaying(emg_time, 2)) {
       emg_data[count] = analogRead(muscle_pin);
-      //Serial.println(emg_data[count]);
       count ++;
       
       if(count == window_size){
         count = 0;
-        
-        //sig_mean = getMean(emg_data);
-        //sig_var = getVariance(emg_data);
         sig_max = getMax(emg_data);
         sig_min = getMin(emg_data);
-        //Serial.println(sig_var);
-        //Serial.println(sig_max);
-        //sig_min = getMin(emg_data);
-        sig_range = sig_max - sig_min;
-        //sig_ll = getAvgLineLength(emg_data);
-//        Serial.print("Variance: ");
-//        Serial.println(sig_var);
-//        Serial.print("Line Length: ");
-//        Serial.println(sig_ll);
-//        Serial.print("Range: ");
-//        Serial.println(sig_range); 
-        
-        //if(true)
-      
-        
-        if (sig_range >= 100 && servo_timer == timer_threshold)//changed from 85 to 10 TODO
+        sig_range = sig_max - sig_min;   
+        if (sig_range >= 100 && servo_timer == timer_threshold)
         {
-          //Serial.println(muscle_pin);
-          //delay(100);
+          
           digitalWrite(LED_pin, HIGH);
-          /*if(last_classification == 0){
-            last_classification = 1;
-          }else if(last_classification == 1){ */
           if(true){
             last_classification = 0;
             hand_opened = !hand_opened;
